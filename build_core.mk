@@ -1,0 +1,10 @@
+$(VHDLS) += rbus_pkg.vhd
+$(VHDLS) += rbus_adp.vhd
+$(VHDLS) += gpsif_pkg.vhd
+$(VHDLS) += gpsif_sub_pkg.vhd
+$(VHDLS) += gpsif.vhd
+$(VHDLS) += gpsif_reg.vhd
+$(VHDLS) += gpsif_db.vhd
+$(VHDLS) += gpsif_buf.vhd
+$(VHDLS) += gpsif_time.vhd
+$(VHDLS) += gpsif_top.vhd

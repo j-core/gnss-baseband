@@ -1,0 +1,23 @@
+READMEs 
+for gps over bitlilnk RTL simulation 
+
+#  -- vector data creation
+cat input.txt input.txt > input3.txt
+
+# -- run simulation
+make -f tests/gpsob/Makefile_gpsob tests/gpsif_tb_gpsob.ghw
+  (Makefile_gpsob specifies, 2500us)
+
+# -- pass judgement  method (automatic compare is not coded)
+  diff acm_bank set value of gpsif_tb.vhd (1ms - 2ms, set once)
+    and
+       acm_bank set value of gpsif_tb_gpsob.vhd (1ms - 2ms, set once)
+       (2 bit sample)
+
+# -- pass judgement  method (automatic compare is not coded)
+  diff acm_bank set value of gpsif_tb.vhd (1ms - 2ms, set once)
+       (here, modifiy input.txt to simulate 1 bit sample)
+    and
+       acm_bank set value of gpsif_tb_gpsob.vhd (1ms - 2ms, set once)
+       (1 bit sample)
+

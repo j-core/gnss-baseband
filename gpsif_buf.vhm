@@ -1,0 +1,55 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use work.gpsif_pack.all;
+
+entity gpsif_buf is port (
+   clk : in std_logic;
+   rst : in std_logic;
+   -- port
+   gps_clk : in std_logic;
+   gps_d   : in std_logic_vector(1 downto 0);
+   a       : in  gpsif_buf_ct_t;
+   y       : out gpsif_buf_i_t;
+   waf     : out gpsif_buf_rw_t );
+end gpsif_buf;
+
+architecture beh of gpsif_buf is
+    register variable this      : gpsif_buf_reg_t  reset := gpsif_buf_reg_RESET;
+    register variable this_sync : gpsif_buf_sync_t reset := gpsif_buf_sync_RESET;
+
+begin
+    pi : process(this,gps_d)
+    variable wa : integer range 0 to 31;
+    register this when gps_clk = '1' and gps_clk'event reset sync when rst = '1';
+    begin
+        case this.wa/8 is -- MS 2 bits: 00=>01=>10=>11
+            when 2      => wa := 24 + (this.wa mod 8);
+            when 3      => wa := 16 + (this.wa mod 8);
+            when others => wa :=       this.wa;
+        end case;
+        this.d(wa) := gps_d;
+        case this.wa is -- MS 2 bits: 00=>01=>11=>10
+            when 15     => this.wa := 24;
+            when 31     => this.wa := 16;
+            when 23     => this.wa :=  0;
+            when others => this.wa := (this.wa + 1) mod 32;
+        end case;
+    end process;
+
+    po : process(this_sync,this)
+    variable wa : integer range 0 to 3;
+    register this_sync when clk = '1' and clk'event reset sync when rst = '1';
+    begin
+        case this_sync.wa_out is
+            when 2      => wa := 3;
+            when 3      => wa := 2;
+            when others => wa := this_sync.wa_out;
+        end case;
+        this_sync.wa_out := this_sync.wa_dly;
+        this_sync.wa_dly := this'register.wa/8; -- other than lower 3 bits
+        y.wa <= wa;
+    end process;
+   -- connect outputs
+    y.d  <= this'register.d(a.ra); -- data specified by a is stable
+    waf  <= this'register.wa;
+end beh;

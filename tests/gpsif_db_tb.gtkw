@@ -1,0 +1,109 @@
+[*]
+[*] GTKWave Analyzer v3.3.71 (w)1999-2016 BSI
+[*] Fri Oct 28 22:20:49 2016
+[*]
+[dumpfile] "/Users/fumio/VM/share/current/soc_top/components/gps_if2/tests/gpsif_db_tb.ghw"
+[dumpfile_mtime] "Fri Oct 28 13:50:34 2016"
+[dumpfile_size] 92689138
+[savefile] "/Users/fumio/VM/share/current/soc_top/components/gps_if2/tests/gspif_db_tb.gtkw"
+[timestart] 0
+[size] 1918 552
+[pos] 0 -1
+*-37.678806 909000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.gpsif_db_tb.
+[treeopen] top.gpsif_db_tb.g.
+[treeopen] top.gpsif_db_tb.g.g.
+[treeopen] top.gpsif_db_tb.g.g.a.
+[treeopen] top.gpsif_db_tb.g.g.acm.
+[treeopen] top.gpsif_db_tb.g.g.acm.a.
+[treeopen] top.gpsif_db_tb.g.g.acm.y.
+[treeopen] top.gpsif_db_tb.g.g.cacode_i.
+[treeopen] top.gpsif_db_tb.g.g.cdgen.a.
+[treeopen] top.gpsif_db_tb.g.g.cdgen.this_c.
+[treeopen] top.gpsif_db_tb.g.g.cdgen.this_r.
+[treeopen] top.gpsif_db_tb.g.g.cdgen.this_r.g1sft.
+[treeopen] top.gpsif_db_tb.g.g.cdgen.this_r.g2sft.
+[treeopen] top.gpsif_db_tb.g.g.regfile_o.
+[treeopen] top.gpsif_db_tb.g.g.regfile_o.angle.
+[treeopen] top.gpsif_db_tb.g.g.sum.this_r.
+[treeopen] top.gpsif_db_tb.g.g.target_i.
+[treeopen] top.gpsif_db_tb.g.g.this_c.
+[treeopen] top.gpsif_db_tb.g.g.this_r.
+[treeopen] top.gpsif_db_tb.g.gpsif_i.
+[treeopen] top.gpsif_db_tb.g.gpsif_o.
+[treeopen] top.gpsif_db_tb.g.target_i.
+[treeopen] top.gpsif_db_tb.g.target_o.
+[sst_width] 245
+[signals_width] 175
+[sst_expanded] 1
+[sst_vpaned_height] 303
+@28
+top.gpsif_db_tb.g.rst
+top.gpsif_db_tb.g.clk
+top.gpsif_db_tb.g.gpsif_i.wp
+top.gpsif_db_tb.g.g.this_r.init
+@22
+#{top.gpsif_db_tb.g.g.regfile_o.angle.angle[29:0]} top.gpsif_db_tb.g.g.regfile_o.angle.angle[29] top.gpsif_db_tb.g.g.regfile_o.angle.angle[28] top.gpsif_db_tb.g.g.regfile_o.angle.angle[27] top.gpsif_db_tb.g.g.regfile_o.angle.angle[26] top.gpsif_db_tb.g.g.regfile_o.angle.angle[25] top.gpsif_db_tb.g.g.regfile_o.angle.angle[24] top.gpsif_db_tb.g.g.regfile_o.angle.angle[23] top.gpsif_db_tb.g.g.regfile_o.angle.angle[22] top.gpsif_db_tb.g.g.regfile_o.angle.angle[21] top.gpsif_db_tb.g.g.regfile_o.angle.angle[20] top.gpsif_db_tb.g.g.regfile_o.angle.angle[19] top.gpsif_db_tb.g.g.regfile_o.angle.angle[18] top.gpsif_db_tb.g.g.regfile_o.angle.angle[17] top.gpsif_db_tb.g.g.regfile_o.angle.angle[16] top.gpsif_db_tb.g.g.regfile_o.angle.angle[15] top.gpsif_db_tb.g.g.regfile_o.angle.angle[14] top.gpsif_db_tb.g.g.regfile_o.angle.angle[13] top.gpsif_db_tb.g.g.regfile_o.angle.angle[12] top.gpsif_db_tb.g.g.regfile_o.angle.angle[11] top.gpsif_db_tb.g.g.regfile_o.angle.angle[10] top.gpsif_db_tb.g.g.regfile_o.angle.angle[9] top.gpsif_db_tb.g.g.regfile_o.angle.angle[8] top.gpsif_db_tb.g.g.regfile_o.angle.angle[7] top.gpsif_db_tb.g.g.regfile_o.angle.angle[6] top.gpsif_db_tb.g.g.regfile_o.angle.angle[5] top.gpsif_db_tb.g.g.regfile_o.angle.angle[4] top.gpsif_db_tb.g.g.regfile_o.angle.angle[3] top.gpsif_db_tb.g.g.regfile_o.angle.angle[2] top.gpsif_db_tb.g.g.regfile_o.angle.angle[1] top.gpsif_db_tb.g.g.regfile_o.angle.angle[0]
+#{top.gpsif_db_tb.g.g.regfile_o.angle.pnco[29:0]} top.gpsif_db_tb.g.g.regfile_o.angle.pnco[29] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[28] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[27] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[26] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[25] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[24] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[23] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[22] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[21] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[20] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[19] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[18] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[17] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[16] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[15] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[14] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[13] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[12] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[11] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[10] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[9] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[8] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[7] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[6] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[5] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[4] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[3] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[2] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[1] top.gpsif_db_tb.g.g.regfile_o.angle.pnco[0]
+@28
+top.gpsif_db_tb.g.gpsif_o.a
+top.gpsif_db_tb.g.g.this_r.st
+top.gpsif_db_tb.g.g.this_r.ready
+top.gpsif_db_tb.g.g.this_r.rd
+top.gpsif_db_tb.g.g.this_r.nc
+top.gpsif_db_tb.g.g.this_r.nd
+top.gpsif_db_tb.g.g.this_r.cnt1ms
+#{top.gpsif_db_tb.g.g.a.d[1:0]} top.gpsif_db_tb.g.g.a.d[1] top.gpsif_db_tb.g.g.a.d[0]
+top.gpsif_db_tb.g.g.sum_i.q
+top.gpsif_db_tb.g.g.acm_i.q
+top.gpsif_db_tb.g.g.sum_i.i
+top.gpsif_db_tb.g.g.acm_i.i
+top.gpsif_db_tb.g.g.acm.this_r.ch
+top.gpsif_db_tb.g.g.cdgen.a.ch
+@800022
+#{top.gpsif_db_tb.g.g.this_r.ch_st[0:6]} top.gpsif_db_tb.g.g.this_r.ch_st[0] top.gpsif_db_tb.g.g.this_r.ch_st[1] top.gpsif_db_tb.g.g.this_r.ch_st[2] top.gpsif_db_tb.g.g.this_r.ch_st[3] top.gpsif_db_tb.g.g.this_r.ch_st[4] top.gpsif_db_tb.g.g.this_r.ch_st[5] top.gpsif_db_tb.g.g.this_r.ch_st[6]
+@28
+top.gpsif_db_tb.g.g.this_r.ch_st[0]
+top.gpsif_db_tb.g.g.this_r.ch_st[1]
+top.gpsif_db_tb.g.g.this_r.ch_st[2]
+top.gpsif_db_tb.g.g.this_r.ch_st[3]
+top.gpsif_db_tb.g.g.this_r.ch_st[4]
+top.gpsif_db_tb.g.g.this_r.ch_st[5]
+top.gpsif_db_tb.g.g.this_r.ch_st[6]
+@1001200
+-group_end
+@28
+top.gpsif_db_tb.g.g.cdgen.a.even
+top.gpsif_db_tb.g.g.cdgen.a.set
+@22
+#{top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][9:0]} top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][9] top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][8] top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][7] top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][6] top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][5] top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][4] top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][3] top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][2] top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][1] top.gpsif_db_tb.g.g.cdgen.this_r.g1sft[0][0]
+#{top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][9:0]} top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][9] top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][8] top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][7] top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][6] top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][5] top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][4] top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][3] top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][2] top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][1] top.gpsif_db_tb.g.g.cdgen.this_r.g2sft[0][0]
+@28
+#{top.gpsif_db_tb.g.g.cdgen.this_c.code[2:0]} top.gpsif_db_tb.g.g.cdgen.this_c.code[2] top.gpsif_db_tb.g.g.cdgen.this_c.code[1] top.gpsif_db_tb.g.g.cdgen.this_c.code[0]
+#{top.gpsif_db_tb.g.g.cdgen.this_r.code[2:0]} top.gpsif_db_tb.g.g.cdgen.this_r.code[2] top.gpsif_db_tb.g.g.cdgen.this_r.code[1] top.gpsif_db_tb.g.g.cdgen.this_r.code[0]
+@22
+#{top.gpsif_db_tb.g.g.acm_o.wd[27:0]} top.gpsif_db_tb.g.g.acm_o.wd[27] top.gpsif_db_tb.g.g.acm_o.wd[26] top.gpsif_db_tb.g.g.acm_o.wd[25] top.gpsif_db_tb.g.g.acm_o.wd[24] top.gpsif_db_tb.g.g.acm_o.wd[23] top.gpsif_db_tb.g.g.acm_o.wd[22] top.gpsif_db_tb.g.g.acm_o.wd[21] top.gpsif_db_tb.g.g.acm_o.wd[20] top.gpsif_db_tb.g.g.acm_o.wd[19] top.gpsif_db_tb.g.g.acm_o.wd[18] top.gpsif_db_tb.g.g.acm_o.wd[17] top.gpsif_db_tb.g.g.acm_o.wd[16] top.gpsif_db_tb.g.g.acm_o.wd[15] top.gpsif_db_tb.g.g.acm_o.wd[14] top.gpsif_db_tb.g.g.acm_o.wd[13] top.gpsif_db_tb.g.g.acm_o.wd[12] top.gpsif_db_tb.g.g.acm_o.wd[11] top.gpsif_db_tb.g.g.acm_o.wd[10] top.gpsif_db_tb.g.g.acm_o.wd[9] top.gpsif_db_tb.g.g.acm_o.wd[8] top.gpsif_db_tb.g.g.acm_o.wd[7] top.gpsif_db_tb.g.g.acm_o.wd[6] top.gpsif_db_tb.g.g.acm_o.wd[5] top.gpsif_db_tb.g.g.acm_o.wd[4] top.gpsif_db_tb.g.g.acm_o.wd[3] top.gpsif_db_tb.g.g.acm_o.wd[2] top.gpsif_db_tb.g.g.acm_o.wd[1] top.gpsif_db_tb.g.g.acm_o.wd[0]
+#{top.gpsif_db_tb.g.g.target_i.d[31:0]} top.gpsif_db_tb.g.g.target_i.d[31] top.gpsif_db_tb.g.g.target_i.d[30] top.gpsif_db_tb.g.g.target_i.d[29] top.gpsif_db_tb.g.g.target_i.d[28] top.gpsif_db_tb.g.g.target_i.d[27] top.gpsif_db_tb.g.g.target_i.d[26] top.gpsif_db_tb.g.g.target_i.d[25] top.gpsif_db_tb.g.g.target_i.d[24] top.gpsif_db_tb.g.g.target_i.d[23] top.gpsif_db_tb.g.g.target_i.d[22] top.gpsif_db_tb.g.g.target_i.d[21] top.gpsif_db_tb.g.g.target_i.d[20] top.gpsif_db_tb.g.g.target_i.d[19] top.gpsif_db_tb.g.g.target_i.d[18] top.gpsif_db_tb.g.g.target_i.d[17] top.gpsif_db_tb.g.g.target_i.d[16] top.gpsif_db_tb.g.g.target_i.d[15] top.gpsif_db_tb.g.g.target_i.d[14] top.gpsif_db_tb.g.g.target_i.d[13] top.gpsif_db_tb.g.g.target_i.d[12] top.gpsif_db_tb.g.g.target_i.d[11] top.gpsif_db_tb.g.g.target_i.d[10] top.gpsif_db_tb.g.g.target_i.d[9] top.gpsif_db_tb.g.g.target_i.d[8] top.gpsif_db_tb.g.g.target_i.d[7] top.gpsif_db_tb.g.g.target_i.d[6] top.gpsif_db_tb.g.g.target_i.d[5] top.gpsif_db_tb.g.g.target_i.d[4] top.gpsif_db_tb.g.g.target_i.d[3] top.gpsif_db_tb.g.g.target_i.d[2] top.gpsif_db_tb.g.g.target_i.d[1] top.gpsif_db_tb.g.g.target_i.d[0]
+#{top.gpsif_db_tb.g.g.cacode_i.wen[0:6]} top.gpsif_db_tb.g.g.cacode_i.wen[0] top.gpsif_db_tb.g.g.cacode_i.wen[1] top.gpsif_db_tb.g.g.cacode_i.wen[2] top.gpsif_db_tb.g.g.cacode_i.wen[3] top.gpsif_db_tb.g.g.cacode_i.wen[4] top.gpsif_db_tb.g.g.cacode_i.wen[5] top.gpsif_db_tb.g.g.cacode_i.wen[6]
+#{top.gpsif_db_tb.g.g.cacode_i.indata[9:0]} top.gpsif_db_tb.g.g.cacode_i.indata[9] top.gpsif_db_tb.g.g.cacode_i.indata[8] top.gpsif_db_tb.g.g.cacode_i.indata[7] top.gpsif_db_tb.g.g.cacode_i.indata[6] top.gpsif_db_tb.g.g.cacode_i.indata[5] top.gpsif_db_tb.g.g.cacode_i.indata[4] top.gpsif_db_tb.g.g.cacode_i.indata[3] top.gpsif_db_tb.g.g.cacode_i.indata[2] top.gpsif_db_tb.g.g.cacode_i.indata[1] top.gpsif_db_tb.g.g.cacode_i.indata[0]
+#{top.gpsif_db_tb.g.g.target_i.a[6:0]} top.gpsif_db_tb.g.g.target_i.a[6] top.gpsif_db_tb.g.g.target_i.a[5] top.gpsif_db_tb.g.g.target_i.a[4] top.gpsif_db_tb.g.g.target_i.a[3] top.gpsif_db_tb.g.g.target_i.a[2] top.gpsif_db_tb.g.g.target_i.a[1] top.gpsif_db_tb.g.g.target_i.a[0]
+@800022
+#{top.gpsif_db_tb.g.g.this_r.sft[0:6]} top.gpsif_db_tb.g.g.this_r.sft[0] top.gpsif_db_tb.g.g.this_r.sft[1] top.gpsif_db_tb.g.g.this_r.sft[2] top.gpsif_db_tb.g.g.this_r.sft[3] top.gpsif_db_tb.g.g.this_r.sft[4] top.gpsif_db_tb.g.g.this_r.sft[5] top.gpsif_db_tb.g.g.this_r.sft[6]
+@28
+top.gpsif_db_tb.g.g.this_r.sft[0]
+top.gpsif_db_tb.g.g.this_r.sft[1]
+top.gpsif_db_tb.g.g.this_r.sft[2]
+top.gpsif_db_tb.g.g.this_r.sft[3]
+top.gpsif_db_tb.g.g.this_r.sft[4]
+top.gpsif_db_tb.g.g.this_r.sft[5]
+top.gpsif_db_tb.g.g.this_r.sft[6]
+#{top.gpsif_db_tb.g.g.cacode_o[2:0]} top.gpsif_db_tb.g.g.cacode_o[2] top.gpsif_db_tb.g.g.cacode_o[1] top.gpsif_db_tb.g.g.cacode_o[0]
+@23
+#{top.gpsif_db_tb.g.target_o.d[31:0]} top.gpsif_db_tb.g.target_o.d[31] top.gpsif_db_tb.g.target_o.d[30] top.gpsif_db_tb.g.target_o.d[29] top.gpsif_db_tb.g.target_o.d[28] top.gpsif_db_tb.g.target_o.d[27] top.gpsif_db_tb.g.target_o.d[26] top.gpsif_db_tb.g.target_o.d[25] top.gpsif_db_tb.g.target_o.d[24] top.gpsif_db_tb.g.target_o.d[23] top.gpsif_db_tb.g.target_o.d[22] top.gpsif_db_tb.g.target_o.d[21] top.gpsif_db_tb.g.target_o.d[20] top.gpsif_db_tb.g.target_o.d[19] top.gpsif_db_tb.g.target_o.d[18] top.gpsif_db_tb.g.target_o.d[17] top.gpsif_db_tb.g.target_o.d[16] top.gpsif_db_tb.g.target_o.d[15] top.gpsif_db_tb.g.target_o.d[14] top.gpsif_db_tb.g.target_o.d[13] top.gpsif_db_tb.g.target_o.d[12] top.gpsif_db_tb.g.target_o.d[11] top.gpsif_db_tb.g.target_o.d[10] top.gpsif_db_tb.g.target_o.d[9] top.gpsif_db_tb.g.target_o.d[8] top.gpsif_db_tb.g.target_o.d[7] top.gpsif_db_tb.g.target_o.d[6] top.gpsif_db_tb.g.target_o.d[5] top.gpsif_db_tb.g.target_o.d[4] top.gpsif_db_tb.g.target_o.d[3] top.gpsif_db_tb.g.target_o.d[2] top.gpsif_db_tb.g.target_o.d[1] top.gpsif_db_tb.g.target_o.d[0]
+@28
+top.gpsif_db_tb.g.target_o.ack
+@1001200
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0

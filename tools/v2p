@@ -1,0 +1,253 @@
+#!/opt/local/bin/perl
+
+# here is an ugly, straight forward C like attempt to parse .vhm 2 process
+# templates into clean VHDL.  It might break, behave badly or even work.
+
+use feature ":5.10";
+
+use strict;
+use IPC::Open2;
+
+# The state of the input, corresponds to entity, architecture, process...
+my $state = "none";
+my $old_state = "none";
+my $white = "";
+
+# register variables and their attibutes from the arch decl
+my @regvar = ();
+my @regvar_type = ();
+my @regvar_rst = ();
+
+# strict wants these
+my ($i, $j, $line_valid, $entity);
+my (@list, @list_r);
+my ($old_white, $comment, $args);
+my ($arch, $sense);
+my ($rst_cond, $process, $regvar, $procvar, $clk_sig, $clk_cond, $rst_sig, $rst_sync);
+my (@procvar, @procvar_rst, @procvar_rsync, @procvar_clk);
+
+my @diversion = ();
+my @out = ();
+
+while(<STDIN>)
+{
+ my $line = $_;
+ chomp($line);
+ $line_valid = "yes";
+
+# Separate the initial whitespace and comments from the code
+ if ($line =~ m/^(\s*)(.*)(--.*)*$/) {
+   $old_white = $white;
+   $white = $1;
+   $line = $2;
+   $comment = $3;
+ }
+
+# transformations go here, based on the current parser state
+ given($state) {
+   when ("none") {
+# look for entity and record the name
+     if ($line =~ m/^(entity)(\s+)(\w+)(\s*.*)$/i) {
+       $state = "entity";
+       $entity = lc($3);
+     }
+   }
+   when ("entity") {
+# find the end of the entity section (well specified or not)
+     if ($line =~ m/^(end)([\s+|;])(\w*)(\s*.*)$/i) {
+       if (lc($3) eq $entity or lc($3) eq "entity" or lc($2) eq ";") {
+         $state = "s_arch";
+       }
+     }
+   }
+   when ("s_arch") {
+# look architecture declariation and check the entity name
+     if ($line =~ m/^(architecture)(\s+)(\w+)(\s+of\s+)(\w+)(\s*.*)$/i) {
+       if (lc($5) eq $entity) {
+         $arch = lc($3);
+         $state = "arch";
+       }
+     }
+   }
+   when ("arch") {
+# look for the start of the architecture body
+     if ($line =~ m/^(begin)(\s*.*)$/i) {
+       $state = "body";
+     }
+# look for 'register variables' and insert signals for them
+     if ($line =~ m/^(register)(\s+)(variable)(\s+)(\w+)(\s+)(:)(\s*)(.+)(\s+)(reset)(\s*)(:=)(\s*)(.+)(\s*);$/i) {
+       push(@diversion, $white . "signal" . $2. $5 . "_c" . $6 . ":" . $8 . $9 . ";");
+       $line = "signal$2$5_r$6:$8$9;";
+       push(@regvar, $5);
+       push(@regvar_type, $9);
+       push(@regvar_rst, $15);
+     }
+   }
+   when ("body") {
+# find the end of the architecture body (well specified or not)
+     if ($line =~ m/^(end)(\s+)(\w+)(\s*.*)$/i) {
+       if (lc($3) eq $arch or lc($3) eq "architecture") {
+         @regvar = ();
+         @regvar_type = ();
+         @regvar_rst = ();
+         $state = "none";
+       }
+     }
+# find processes
+     if ($line =~ m/^(\w*)(\s*:\s*)*(process)(\s*.*)$/i) {
+       $line = "$1$2$3";
+       $process = $1;
+       $sense = $4;
+       if ($sense =~ m/^(\s*)\(([\w\s,]*)\)(\s*.*)$/i) {
+# parse the sensitivity list and add in the signals for register vars
+         @list = split(',', $2);
+         @list_r = ();
+         foreach $i (@list) {
+           if (grep {$_ eq $i} @regvar) {
+             push(@list_r, $i . "_r");
+           } else {
+             push(@list_r, $i);
+           }
+         }
+         $args = join(',', @list_r);
+         $line = "$line$1($args)$4";
+       } else {
+# empty sensitivity list
+         $line = "$line()$4";
+       }
+       @procvar = ();
+       @procvar_rst = ();
+       @procvar_rsync = ();
+       @procvar_clk = ();
+       $state = "s_process";
+     }
+   }
+   when ("s_process") {
+# look for register var register and reset conditions
+     if ($line =~ m/^(register)(\s+)(\w+)(\s+)(when)(\s+)(.+)(\s+)(reset)(\s*)(sync)?(\s+)(when)(\s+)(.*);$/i) {
+       $clk_cond = $7;
+       $rst_sync = $11;
+       $rst_cond = $15;
+       push(@procvar, $3);
+       push(@procvar_rst, $rst_cond);
+       push(@procvar_rsync, $rst_sync);
+       push(@procvar_clk, $clk_cond);
+
+       $line_valid = "";
+        $j = 0;
+        foreach $regvar(@regvar) {
+          if ($regvar[$j] eq $3) {
+             push(@diversion, $white . "variable " . $3 . " : " . $regvar_type[$j] . ";");
+          }
+          $j++;
+        }
+     }
+# look for the start of the process body
+     if ($line =~ m/^(begin)(\s*.*)$/i) {
+       $state = "process";
+       push(@diversion, $white . $line . $comment);
+       $i = 0;
+       foreach $procvar(@procvar) {
+         push(@diversion, $white . "   " . $procvar[$i] . " := " . $procvar[$i] . "_r;");
+         $i++;
+       }
+       if ($i>0) {
+         push(@diversion, "");
+       }
+       $line_valid = "";
+     }
+   }
+   when ("process") {
+# find the end of the process body
+     if ($line =~ m/^(end)(\s+)(\w+)(\s*.*)$/i) {
+       if (lc($3) eq "process") {
+         $state = "body";
+         $line_valid = "";
+
+         push(@diversion, "");
+         foreach $procvar(@procvar) {
+           push(@diversion, $old_white . $procvar . "_c <= " . $procvar . ";");
+         }
+         push(@diversion, $white . $line . $comment);
+
+         $i = 0;
+         foreach $procvar(@procvar) {
+
+           $j = 0;
+           foreach $regvar(@regvar) {
+             if ($regvar[$j] eq $procvar[$i]) {
+               $rst_cond = $regvar_rst[$j];
+             }
+             $j++;
+           }
+
+           push(@diversion, "");
+           $procvar_clk[$i] =~ m/^(\s*)(\w+)/;
+           $clk_sig = $2;
+
+           $procvar_rst[$i] =~ m/^(\s*)(\w+)/;
+           $rst_sig = $2;
+
+           push(@diversion, $white . $process . "_r" . $i . " : process(" . $clk_sig . ", " . $rst_sig . ")");
+           push(@diversion, $white . "begin");
+
+           if ($procvar_rsync[$i] =~ m/sync.*/i) {
+             push(@diversion, $white . "   if " . $procvar_clk[$i] . " then");
+             push(@diversion, $white . "      if " . $procvar_rst[$i] . " then");
+             push(@diversion, $white . "         " . $procvar[$i] . "_r <= " . $rst_cond . ";");
+             push(@diversion, $white . "      else");
+             push(@diversion, $white . "         " . $procvar[$i] . "_r <= " . $procvar[$i] . "_c;");
+             push(@diversion, $white . "      end if;");
+             push(@diversion, $white . "   end if;");
+             push(@diversion, $white . "end process;");
+           } else {
+             push(@diversion, $white . "   if " . $procvar_rst[$i] . " then");
+             push(@diversion, $white . "      " . $procvar[$i] . "_r <= " . $rst_cond . ";");
+             push(@diversion, $white . "   elsif " . $procvar_clk[$i] . " then");
+             push(@diversion, $white . "      " . $procvar[$i] . "_r <= " . $procvar[$i] . "_c;");
+             push(@diversion, $white . "   end if;");
+             push(@diversion, $white . "end process;");
+           }
+           $i++;
+         }
+       }
+     }
+   }
+ }
+
+ if ($state ne $old_state) {
+   foreach $i (@diversion) {
+     #print "$i\n";
+     push @out => $i;
+   }
+   @diversion = ();
+   $old_state = $state;
+ }
+# look for register or comb attribute, replace it.  FIXME: wrong place, no error checking.
+ if ($line_valid eq "yes") {
+   $line =~ s/(\w)\'register/$1_r/gi;
+   $line =~ s/(\w)\'combinatorial/$1_c/gi;
+   $line =~ s/(\w)\'comb/$1_c/gi;
+   push(@diversion, "$white$line$comment");
+ }
+}
+
+foreach $i (@diversion) {
+ #print "$i\n";
+ push @out => $i;
+}
+#my $count = 1;
+#printf("-- %03d: %s\n", $count++, $_) for @out;
+
+my($chld_out, $chld_in);
+#my $pid = open2($chld_out, $chld_in, 'cpp -w -P -nostdinc -I.');
+my $pid = open2($chld_out, $chld_in, 'gcc -E -P -x c -nostdinc -DVHDL -I. -');
+print $chld_in join("\n" => @out); close($chld_in);
+my @cpp_out = <$chld_out>;
+waitpid( $pid, 0 ); close($chld_out);
+my $child_exit_status = $? >> 8;
+
+for(@cpp_out) {
+ next if $_ =~ /^#/;
+ print;
+}
